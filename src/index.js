@@ -1,19 +1,37 @@
 // PLEASE DON'T change function name
-module.exports = function makeExchange(currency) {
- 
-// Coins used will be half-dollars, quarters, dimes, nickels, and pennies, worth 50¢, 25¢, 10¢, 5¢ and 1¢, respectively.
-// They'll be represented by the strings H, Q, D, N and P.
+;module.exports = function makeExchange(currency) {
 
-	var currency,
-		Error = {
+		var currency,
+
+		 	coins = [50, 25, 10, 5, 1],
+
+			str = ['H', 'Q', 'D', 'N', 'P'],
+
+			cash = {},
+
+			Error = {
 			error: "You are rich, my friend! We don't have so much coins for exchange"
 		};
 
-	function makeExchange() {
-		if (currency > 10000) {
-			return Error;
-		} else return currency;
-	}
 
-	return makeExchange();
+		if (currency > 10000) {
+			return Error; 
+		} 
+
+		var i = 0;
+		while (currency != 0 && i < coins.length) {
+			
+			var result = currency / coins[i];
+				currency -= Math.floor(result) * coins[i];
+			var cashStr = Math.floor(result);
+
+			if (cashStr != 0) {
+	            cash[str[i]] = Math.floor(result); 
+	        }
+
+        i++;
+
+		}
+
+	return cash;
 }
