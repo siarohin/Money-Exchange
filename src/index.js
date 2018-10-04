@@ -11,7 +11,7 @@ module.exports = function makeExchange(currency) {
 		if (currency > 10000) return Error; 
 		if (currency <= 0) return {}; 
 
-		let i = 0;
+		i = 0;
 		while (currency != 0 && i < coins.length) {
 			
 		    result = currency / coins[i];
